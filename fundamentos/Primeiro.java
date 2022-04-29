@@ -1,11 +1,14 @@
 public class Primeiro {
 	
+	private static String nome;
+	private static String sobrenome;
+	private static int idade;
+	private static float salario;
+	private static boolean isJava;
+	private static int qtdeMes;
+	
 	private static boolean validar(int tamanho){
-		if(tamanho == 6){
-			return true;
-		} else {
-			return false;
-		}
+		return tamanho == 6;
 	}
 	
 	private static int calcularAnoNascimento(int aIdade){
@@ -17,52 +20,57 @@ public class Primeiro {
 	}
 
 	private static String obterSituacao(int aIdade){
-		String situacao = "veterano";
-		if(aIdade < 50){
-			situacao = "iniciante";
-		}
-		
-		return situacao;
+		return aIdade < 50 ? "iniciante" : "veterano";
 	}
 	
 	private static String obterStatus(float oSalario){
-		String status = "instavel";
 		if(oSalario > 1000){
-			status = "estavel";
-		}
-		
-		return status;
+			return "estavel";
+		}		
+		return "instavel";
+	}
+	
+	private static void tratarParametros(String[] argumentos){
+		nome = argumentos[0];
+		sobrenome = argumentos[1];
+		idade = Integer.valueOf(argumentos[2]);
+		salario = Float.valueOf(argumentos[3]);
+		isJava = Boolean.valueOf(argumentos[4]);
+		qtdeMes = Integer.valueOf(argumentos[5]);			
+	}
+
+	private static void imprimir(){
+		int anoNascimento = calcularAnoNascimento(idade);
+		float valorTotal = calcularValorTotal(salario, qtdeMes);			
+		String situacao = obterSituacao(idade);
+		String status = obterStatus(salario);
+
+		System.out.println("Nome: " + nome);
+		System.out.println("Sobrenome: " + sobrenome);
+		System.out.println("Idade: " + idade);
+		System.out.println("Ano de nascimento: " + anoNascimento);
+		System.out.println("Salario: " + salario);
+		System.out.println("Java Dev: " + isJava);
+		System.out.println("Valor Total: " + valorTotal);
+		System.out.println("Situacao: " + situacao);
+		System.out.println("Status: " + status);
 	}
 	
 	public static void main(String[] args){
 		
 		boolean ehValido = validar(args.length);
 		
-		if(ehValido){		
-			String nome = args[0];
-			String sobrenome = args[1];
-			int idade = Integer.valueOf(args[2]);
-			float salario = Float.valueOf(args[3]);
-			boolean isJava = Boolean.valueOf(args[4]);
-			int qtdeMes = Integer.valueOf(args[5]);			
+		if(ehValido){
+			tratarParametros(args);
 
-			int anoNascimento = calcularAnoNascimento(idade);
-			float valorTotal = calcularValorTotal(salario, qtdeMes);			
-			String situacao = obterSituacao(idade);
-			String status = obterStatus(salario);
-
-			System.out.println("Nome: " + nome);
-			System.out.println("Sobrenome: " + sobrenome);
-			System.out.println("Idade: " + idade);
-			System.out.println("Ano de nascimento: " + anoNascimento);
-			System.out.println("Salario: " + salario);
-			System.out.println("Java Dev: " + isJava);
-			System.out.println("Valor Total: " + valorTotal);
-			System.out.println("Situacao: " + situacao);
-			System.out.println("Status: " + status);
+			imprimir(
+				anoNascimento, 
+				valorTotal, 
+				situacao, 
+				status
+			);
 		} else {
 			System.out.println("Informacoes invalidas!");
 		}
-
 	}
 }
