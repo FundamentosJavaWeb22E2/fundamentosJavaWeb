@@ -1,3 +1,5 @@
+package testes;
+
 public class Primeiro {
 	
 	private static String nome;
@@ -57,18 +59,13 @@ public class Primeiro {
 	}
 	
 	public static void main(String[] args){
-		
+
 		boolean ehValido = validar(args.length);
 		
 		if(ehValido){
 			tratarParametros(args);
 
-			imprimir(
-				anoNascimento, 
-				valorTotal, 
-				situacao, 
-				status
-			);
+			imprimir();
 		} else {
 			System.out.println("Informacoes invalidas!");
 		}
