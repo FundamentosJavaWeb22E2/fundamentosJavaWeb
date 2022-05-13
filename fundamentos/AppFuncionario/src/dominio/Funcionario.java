@@ -1,22 +1,24 @@
-package testes;
+package dominio;
+
+import auxiliar.Constante;
 
 public class Funcionario {
-	String nome;
-	int idade;
-	float salario;
-	float bonus;
-	float desconto;
+	public String nome;
+	public int idade;
+	public float salario;
+	public float bonus;
+	public float desconto;
 
-	Funcionario(){
+	public Funcionario(){
 		this.nome = "Fantasma";
 	}
 
-	Funcionario(String nome, int idade){
+	public Funcionario(String nome, int idade){
 		this.nome = nome;
 		this.idade = idade;
 	}
 	
-	Funcionario(String nome, int idade, float salario, float bonus, float desconto) {
+	public Funcionario(String nome, int idade, float salario, float bonus, float desconto) {
 		this(nome, idade);
 		this.salario = salario;
 		this.bonus = bonus;
@@ -24,7 +26,7 @@ public class Funcionario {
 	}
 	
 	private String obterSituacao(float salarioLiquido) {
-		if(salarioLiquido > 5000) {
+		if(salarioLiquido > Constante.VALOR_RICO) {
 			return "rico";					
 		}
 		return "pobre";
@@ -34,7 +36,7 @@ public class Funcionario {
 		return salario + bonus - desconto;
 	}
 
-	void impressao(){
+	public void impressao(){
 		float salarioLiquido = calcularSalarioLiquido();
 		
 		String situacao = obterSituacao(salarioLiquido);
