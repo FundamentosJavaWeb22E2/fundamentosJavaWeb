@@ -2,39 +2,32 @@ package dominio;
 
 import auxiliar.Constante;
 
-public class Funcionario {
-	public String nome;
-	public int idade;
-	public float salario;
-	public float bonus;
-	public float desconto;
+public abstract class Funcionario {
+	private String nome;
+	private int idade;
+	private float salario;
 
 	public Funcionario(){
 		this.nome = "Fantasma";
+		this.idade = 18;
+		this.salario = 1045;
 	}
 
 	public Funcionario(String nome, int idade){
 		this.nome = nome;
 		this.idade = idade;
 	}
-	
-	public Funcionario(String nome, int idade, float salario, float bonus, float desconto) {
-		this(nome, idade);
-		this.salario = salario;
-		this.bonus = bonus;
-		this.desconto = desconto;
-	}
-	
-	private String obterSituacao(float salarioLiquido) {
-		if(salarioLiquido > Constante.VALOR_RICO) {
-			return "rico";					
+
+	public String obterSituacao(float salarioLiquido){
+		if(salarioLiquido <= Constante.VALOR_POBRE) {
+			return Constante.POBRE;
+		}else if (salarioLiquido > Constante.VALOR_RICO) {
+			return Constante.RICO;
 		}
-		return "pobre";
+		return Constante.CLASSE_MEDIA;
 	}
 	
-	private float calcularSalarioLiquido(){
-		return salario + bonus - desconto;
-	}
+	public abstract float calcularSalarioLiquido();
 
 	public void impressao(){
 		float salarioLiquido = calcularSalarioLiquido();
@@ -46,10 +39,35 @@ public class Funcionario {
 		System.out.println("Salário Líquido = R$"+salarioLiquido);
 		System.out.println("Situação = "+situacao);
 		System.out.println("............");
-	}
+	}	
 
 	@Override
-	public String toString() {
-		return nome+";"+idade+";"+salario+";"+bonus+";"+desconto;
+	public String toString() {		
+		return String.format("%s;%d;%.2f",nome, idade, salario);
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public float getSalario() {
+		return salario;
+	}
+
+	public void setSalario(float salario) {
+		this.salario = salario;
+	}
+
 }
