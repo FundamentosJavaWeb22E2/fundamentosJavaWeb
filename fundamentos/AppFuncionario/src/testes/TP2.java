@@ -3,6 +3,7 @@ package testes;
 import java.util.Scanner;
 
 import dominio.Administrativo;
+import dominio.Estagiario;
 import dominio.Funcionario;
 import dominio.Programador;
 
@@ -30,8 +31,9 @@ public class TP2 {
 		do{
 			System.out.println("A) Cadastrar Administrativo");
 			System.out.println("B) Cadastrar Programador");
-			System.out.println("C) Consultar Funcionário");
-			System.out.println("D) Exibir Funcionários");
+			System.out.println("C) Cadastrar Estagiário");
+			System.out.println("D) Consultar Funcionário");
+			System.out.println("E) Exibir Funcionários");
 			System.out.println("Z) Sair");
 
 			System.out.print("Informe a opcao desejada: ");			
@@ -96,7 +98,36 @@ public class TP2 {
 				}				
 				break;
 
-			case "C":				
+			case "C":
+				if(pos < TAMANHO) {
+					Estagiario estag = new Estagiario();
+					
+					System.out.print("Informe o seu nome: ");
+					estag.setNome(sc.next());
+	
+					System.out.print("Informe a sua idade: ");
+					estag.setIdade(sc.nextInt());
+	
+					System.out.print("Informe o seu salário: ");
+					estag.setSalario(sc.nextFloat());
+					
+					System.out.print("Informe a sua faculdade: ");
+					estag.setFaculdade(sc.next());
+
+					System.out.print("Informe o seu período: ");
+					estag.setPeriodo(sc.nextInt());
+					
+					funcionarios[pos] = estag;
+
+					funcionarios[pos].impressao();
+					
+					pos++;
+				} else {
+					System.out.println("Impossível realizar um novo cadastramento!");
+				}				
+				break;
+
+			case "D":				
 				System.out.print("Informe o código do funcionário: ");			
 				int codigo = sc.nextInt();
 
@@ -108,7 +139,7 @@ public class TP2 {
 
 				break;
 
-			case "D":				
+			case "E":				
 				imprimir();
 
 				break;

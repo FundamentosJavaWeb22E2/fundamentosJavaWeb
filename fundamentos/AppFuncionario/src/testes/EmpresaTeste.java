@@ -15,9 +15,7 @@ public class EmpresaTeste {
 		funcionariosInfnet[2] = new Administrativo("jose", 30, 3000, 400, 500);
 		
 		Empresa infnet = new Empresa();
-		infnet.setNome("Instituto");
-		infnet.setSobrenome("Infnet");
-		infnet.setUltimoNome("Educação");
+		infnet.setNome("Instituto Infnet Educação");
 		infnet.setFuncionarios(funcionariosInfnet);
 		infnet.impressao();
 		
@@ -26,9 +24,7 @@ public class EmpresaTeste {
 		funcionariosInstituto[1] = new Programador("pedrinho", 30, 3000, "python", false);
 		
 		Empresa instituto = new Empresa();
-		instituto.setNome("Instituto");
-		instituto.setSobrenome("Infnet");
-		instituto.setUltimoNome("Educação");
+		instituto.setNome("Instituto Infnet Educação");
 		instituto.setFuncionarios(funcionariosInstituto);
 		instituto.impressao();
 		
@@ -40,9 +36,7 @@ public class EmpresaTeste {
 		funcionariosInstitutoInfnet[4] = new Administrativo("jose", 30, 3000, 400, 500);
 		
 		Empresa institutoInfnet = new Empresa();
-		institutoInfnet.setNome("Instituto");
-		institutoInfnet.setSobrenome("Infnet");
-		institutoInfnet.setUltimoNome("Educação");
+		institutoInfnet.setNome("Instituto Infnet Educação");
 		institutoInfnet.setFuncionarios(funcionariosInstitutoInfnet);
 		institutoInfnet.impressao();
 
@@ -53,9 +47,7 @@ public class EmpresaTeste {
 		//TODO Tratar as exceptions na classe de Empresa
 		
 		Empresa elberth = new Empresa();
-		elberth.setNome("Elberth");
-		elberth.setSobrenome("Moraes");
-		elberth.setUltimoNome("Java");
+		elberth.setNome("Elberth Moraes Java");
 //		elberth.setFuncionarios(funcionariosElberth);
 		elberth.impressao();
 	}
