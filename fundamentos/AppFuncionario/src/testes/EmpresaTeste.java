@@ -4,6 +4,7 @@ import dominio.Administrativo;
 import dominio.Empresa;
 import dominio.Funcionario;
 import dominio.Programador;
+import exceptions.NomeIncompletoException;
 
 public class EmpresaTeste {
 
@@ -15,7 +16,12 @@ public class EmpresaTeste {
 		funcionariosInfnet[2] = new Administrativo("jose", 30, 3000, 400, 500);
 		
 		Empresa infnet = new Empresa();
-		infnet.setNome("Instituto Infnet Educação");
+		try {
+			infnet.setNome("Instituto Infnet Educação");
+		} catch (NomeIncompletoException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		infnet.setFuncionarios(funcionariosInfnet);
 		infnet.impressao();
 		
@@ -24,7 +30,12 @@ public class EmpresaTeste {
 		funcionariosInstituto[1] = new Programador("pedrinho", 30, 3000, "python", false);
 		
 		Empresa instituto = new Empresa();
-		instituto.setNome("Instituto Infnet Educação");
+		try {
+			instituto.setNome("Instituto Infnet Educação");
+		} catch (NomeIncompletoException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		instituto.setFuncionarios(funcionariosInstituto);
 		instituto.impressao();
 		
@@ -36,7 +47,12 @@ public class EmpresaTeste {
 		funcionariosInstitutoInfnet[4] = new Administrativo("jose", 30, 3000, 400, 500);
 		
 		Empresa institutoInfnet = new Empresa();
-		institutoInfnet.setNome("Instituto Infnet Educação");
+		try {
+			institutoInfnet.setNome("Instituto Infnet Educação");
+		} catch (NomeIncompletoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		institutoInfnet.setFuncionarios(funcionariosInstitutoInfnet);
 		institutoInfnet.impressao();
 
@@ -47,7 +63,12 @@ public class EmpresaTeste {
 		//TODO Tratar as exceptions na classe de Empresa
 		
 		Empresa elberth = new Empresa();
-		elberth.setNome("Elberth Moraes Java");
+		try {
+			elberth.setNome("Elberth Moraes Java");
+		} catch (NomeIncompletoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		elberth.setFuncionarios(funcionariosElberth);
 		elberth.impressao();
 	}

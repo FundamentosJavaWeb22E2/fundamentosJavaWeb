@@ -1,10 +1,14 @@
 package dominio;
 
+import exceptions.FaturamentoZeradoException;
+import exceptions.NomeIncompletoException;
+
 public class Empresa {
 
 	private String nome;
 	private String sobrenome;
 	private String ultimoNome;
+	private float faturamento;
 	private Funcionario[] funcionarios;
 	
 	private float calcularFolhaPagamento() {
@@ -38,9 +42,13 @@ public class Empresa {
 		return nome+";"+sobrenome+";"+ultimoNome;
 	}
 
-	public String getNome() {
+	public String getNome() throws NomeIncompletoException {
 		
 		StringBuilder sb = new StringBuilder();
+		
+		if(ultimoNome == null) {
+			throw new NomeIncompletoException("O campo 'nome' não foi preenchido!");
+		}
 		
 		sb.append(ultimoNome.toUpperCase().charAt(0));
 		sb.append(".");
@@ -53,9 +61,13 @@ public class Empresa {
 
 		return sb.toString();
 	}
-	public void setNome(String nome) {
+	public void setNome(String nome) throws NomeIncompletoException {
 		int posInicial = nome.indexOf(" ");
 		int posFinal = nome.lastIndexOf(" ");
+		
+		if(posInicial < 0) {
+			throw new NomeIncompletoException("O preenchimento do campo 'nome' está incorreto: " + nome);
+		}
 
 		this.nome = nome.substring(0, posInicial);
 		this.sobrenome = nome.substring(posInicial, posFinal).trim();
@@ -66,5 +78,16 @@ public class Empresa {
 	}
 	public void setFuncionarios(Funcionario[] funcionarios) {
 		this.funcionarios = funcionarios;
+	}
+
+	public float getFaturamento() {
+		return faturamento;
+	}
+
+	public void setFaturamento(float faturamento) throws FaturamentoZeradoException {
+		if(faturamento < 0) {
+			throw new FaturamentoZeradoException("O preenchimento do campo 'faturamento' está incorreto: " + faturamento);
+		}
+		this.faturamento = faturamento;
 	}
 }
