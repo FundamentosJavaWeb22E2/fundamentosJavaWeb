@@ -1,7 +1,6 @@
 package dominio;
 
-public class Estagiario extends Funcionario {
-	
+public class Estagiario extends Funcionario {	
 	private String faculdade;
 	private int periodo;
 	

@@ -17,6 +17,18 @@ public abstract class Funcionario {
 		this.nome = nome;
 		this.idade = idade;
 	}
+	
+	public String obterStringSalarioPorFuncionario(){
+		float salarioLiquido = this.calcularSalarioLiquido();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getNome());
+		sb.append(";");
+		sb.append(salarioLiquido);
+		sb.append("\r\n");
+		
+		return sb.toString();
+	}
 
 	public String obterSituacao(float salarioLiquido){
 		if(salarioLiquido <= Constante.VALOR_POBRE) {
