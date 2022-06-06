@@ -1,5 +1,6 @@
 package dominio;
 
+import exceptions.EmpresaSemFuncionarioException;
 import exceptions.FaturamentoZeradoException;
 import exceptions.NomeIncompletoException;
 
@@ -10,6 +11,7 @@ public class Empresa {
 	private String ultimoNome;
 	private float faturamento;
 	private Funcionario[] funcionarios;
+	//TODO Transformar o vetor em List
 	
 	private float calcularFolhaPagamento() {
 		float total = 0;
@@ -21,7 +23,12 @@ public class Empresa {
 		return total;
 	}
 	
-	public void impressao() {
+	public void impressao() throws EmpresaSemFuncionarioException {
+		
+		if(funcionarios == null) {
+			throw new EmpresaSemFuncionarioException("Nenhum funcionário associado!!!");
+		}
+		
 		System.out.printf("Empresa: %s <qtde = %d> | <valor = %.2f>\n", 
 				this,
 				funcionarios.length,

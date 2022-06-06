@@ -6,6 +6,7 @@ import dominio.Administrativo;
 import dominio.Estagiario;
 import dominio.Funcionario;
 import dominio.Programador;
+import exceptions.DescontoNegativoException;
 
 public class TP2 {
 
@@ -42,28 +43,32 @@ public class TP2 {
 			switch (opcao.toUpperCase()) {
 			case "A":
 				if(pos < TAMANHO) {
-					Administrativo adm = new Administrativo();
-					
-					System.out.print("Informe o seu nome: ");
-					adm.setNome(sc.next());
-	
-					System.out.print("Informe a sua idades: ");
-					adm.setIdade(sc.nextInt());
-	
-					System.out.print("Informe o seu salário: ");
-					adm.setSalario(sc.nextFloat());
-					
-					System.out.print("Informe o seu bônus: ");
-					adm.setBonus(sc.nextFloat());
+					try {
+						Administrativo adm = new Administrativo();
+						
+						System.out.print("Informe o seu nome: ");
+						adm.setNome(sc.next());
+		
+						System.out.print("Informe a sua idades: ");
+						adm.setIdade(sc.nextInt());
+		
+						System.out.print("Informe o seu salário: ");
+						adm.setSalario(sc.nextFloat());
+						
+						System.out.print("Informe o seu bônus: ");
+						adm.setBonus(sc.nextFloat());
 
-					System.out.print("Informe o seu desconto: ");
-					adm.setDesconto(sc.nextFloat());
-					
-					funcionarios[pos] = adm;
+						System.out.print("Informe o seu desconto: ");
+						adm.setDesconto(sc.nextFloat());
+						funcionarios[pos] = adm;
 
-					funcionarios[pos].impressao();
+						funcionarios[pos].impressao();
+						
+						pos++;
+					} catch (DescontoNegativoException e) {
+						System.out.println("[ERRO] " + e.getMessage());						
+					}
 					
-					pos++;
 				} else {
 					System.out.println("Impossível realizar um novo cadastramento!");
 				}				

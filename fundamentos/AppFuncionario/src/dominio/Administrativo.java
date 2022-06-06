@@ -1,5 +1,7 @@
 package dominio;
 
+import exceptions.DescontoNegativoException;
+
 public class Administrativo extends Funcionario {
 	private float bonus;
 	private float desconto;
@@ -30,7 +32,12 @@ public class Administrativo extends Funcionario {
 	public float getBonus() {
 		return bonus;
 	}
-	public void setDesconto(float desconto) {
+	public void setDesconto(float desconto) throws DescontoNegativoException {
+		
+		if(desconto < 0) {
+			throw new DescontoNegativoException("O desconto não pode ser negativo!");
+		}
+		
 		this.desconto = desconto;
 	}
 	public float getDesconto() {

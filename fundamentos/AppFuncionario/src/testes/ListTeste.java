@@ -20,7 +20,7 @@ public class ListTeste {
 				
 				String linha = leitura.readLine();
 
-				List<String> nomes = new ArrayList<String>();
+				List<String> mensagens = new ArrayList<String>();
 				
 				int qtdeArquivo = 0;
 				float salarioArquivo = 0;
@@ -37,7 +37,14 @@ public class ListTeste {
 						salarioArquivo = Float.valueOf(campos[1]);
 						
 					} catch (NumberFormatException e) {
-						nomes.add(campos[0]);
+						mensagens.add(
+								String.format(
+										"O funcionário %s recebe R$%.2f", 
+										campos[0],
+										Float.valueOf(campos[1])
+									)
+							);
+
 						qtde++;
 						
 						float salario = Float.valueOf(campos[1]);
@@ -46,18 +53,21 @@ public class ListTeste {
 
 					linha = leitura.readLine();				
 				}
-				
-				//TODO trabalhar na exibição da mensagem de corrompido
-				
-				System.out.println("Qtde no arquivo: " + qtdeArquivo);
-				System.out.println("Salário no arquivo: " + salarioArquivo);
 
-				System.out.println("Qtde total: " + qtde);
-				System.out.println("Soma salarial: " + somaSalarial);
-
-//				for(String nome : nomes) {
-//					System.out.println(nome);
-//				}
+				if(qtdeArquivo == qtde && salarioArquivo == somaSalarial) {					
+					for(String msg : mensagens) {
+						System.out.println(msg);
+					}
+					
+					System.out.println("Quantidade de funcionários: " + qtde);
+					System.out.println("Soma salarial: " + somaSalarial);
+					
+					float mediaSalarial = somaSalarial/qtde;
+					
+					System.out.println("Média salarial: " + mediaSalarial);
+				} else {	
+					System.out.println("Arquivo corrompido!");
+				}
 				
 				leitura.close();
 				fileR.close();

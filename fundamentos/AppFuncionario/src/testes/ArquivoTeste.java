@@ -9,6 +9,7 @@ import java.io.IOException;
 import dominio.Administrativo;
 import dominio.Estagiario;
 import dominio.Programador;
+import exceptions.DescontoNegativoException;
 
 public class ArquivoTeste {
 
@@ -36,17 +37,20 @@ public class ArquivoTeste {
 
 					switch (campos[0].toUpperCase()) {
 					case "A":
-						Administrativo adm = new Administrativo();
-						adm.setNome(campos[1]);
-						adm.setIdade(Integer.valueOf(campos[2]));
-						adm.setSalario(Float.valueOf(campos[3]));
-						adm.setBonus(Float.valueOf(campos[4]));
-						adm.setDesconto(Float.valueOf(campos[5]));
-
-						escrita.write(adm.obterStringSalarioPorFuncionario());
-						
-						qtde++;
-						somaSalarial = somaSalarial + adm.calcularSalarioLiquido();
+						try {
+							Administrativo adm = new Administrativo();
+							adm.setNome(campos[1]);
+							adm.setIdade(Integer.valueOf(campos[2]));
+							adm.setSalario(Float.valueOf(campos[3]));
+							adm.setBonus(Float.valueOf(campos[4]));
+							adm.setDesconto(Float.valueOf(campos[5]));
+							escrita.write(adm.obterStringSalarioPorFuncionario());
+							
+							qtde++;
+							somaSalarial = somaSalarial + adm.calcularSalarioLiquido();
+						} catch (NumberFormatException | DescontoNegativoException e) {
+							System.out.println("[ERRO] " + e.getMessage());
+						}
 
 						break;
 
