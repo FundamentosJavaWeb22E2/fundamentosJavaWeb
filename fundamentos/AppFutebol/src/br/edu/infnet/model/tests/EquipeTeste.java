@@ -13,12 +13,12 @@ public class EquipeTeste {
 
 	public static void main(String[] args) {
 		
+		ComissaoTecnica c1 = new ComissaoTecnica();
+		ComissaoTecnica c2 = new ComissaoTecnica();
+		
 		Jogador j1 = new Jogador();
 		Jogador j2 = new Jogador();
 		Jogador j3 = new Jogador();
-		
-		ComissaoTecnica c1 = new ComissaoTecnica();
-		ComissaoTecnica c2 = new ComissaoTecnica();
 		
 		Dirigente d1 = new Dirigente();
 		
@@ -29,14 +29,15 @@ public class EquipeTeste {
 		listaProfissional.add(c1);
 		listaProfissional.add(c2);
 		listaProfissional.add(d1);
-		
+
 		Equipe equipe = new Equipe();
 		equipe.setNome("Flamengo");
 		equipe.setAnoFundacao(1887);
 		equipe.setEmail("fl@mengo.com");
-		equipe.setTelefone("21999999999");
-		equipe.setProfissionais(listaProfissional);		
-		
+		equipe.setTelefone("21999999999");		
+		equipe.setProfissionais(listaProfissional);
+				
 		equipe.impressao();
+		
 	}
 }

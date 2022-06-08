@@ -23,6 +23,7 @@ public class Equipe {
 	
 	public void impressao(){
 		System.out.println("Nome: " + nome);
+		System.out.println("Ano de fundação: " + anoFundacao);
 		System.out.println("E-mail: " + email);
 		System.out.println("Telefone: " + telefone);
 		System.out.println("Quantidade de profissionais: " + profissionais.size());
