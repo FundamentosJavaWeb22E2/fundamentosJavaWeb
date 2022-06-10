@@ -1,7 +1,9 @@
 package br.edu.infnet.model.tests;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,9 @@ public class ArquivoTeste {
 			try {
 				FileReader fileR = new FileReader(dir+arq);
 				BufferedReader leitura = new BufferedReader(fileR);
+				
+				FileWriter fileW = new FileWriter(dir+"out_"+arq);
+				BufferedWriter escrita = new BufferedWriter(fileW);
 				
 				String linha = leitura.readLine();
 				
@@ -96,9 +101,13 @@ public class ArquivoTeste {
 				}
 				
 				equipe.impressao();
+				
+				escrita.write(equipe.obterDadosArquivo());
 
 				leitura.close();
 				fileR.close();
+				escrita.close();
+				fileW.close();
 			} catch (IOException e) {
 				System.out.println("[ERRO] " + e.getMessage());
 			}

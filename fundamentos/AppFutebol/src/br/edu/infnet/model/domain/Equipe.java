@@ -21,6 +21,19 @@ public class Equipe {
 		return valorGastoMensal;
 	}
 	
+	public String obterDadosArquivo() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(nome);
+		sb.append(";");
+		sb.append(profissionais.size());
+		sb.append(";");
+		sb.append(calcularGastoMensal());
+		sb.append("\r\n");
+
+		return sb.toString();
+	}
+	
 	public void impressao(){
 		System.out.println("Nome: " + nome);
 		System.out.println("Ano de fundação: " + anoFundacao);
