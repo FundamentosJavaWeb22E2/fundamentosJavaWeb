@@ -13,7 +13,7 @@
 		      <li><a href="/usuario/listar">Usuário</a></li>
 		      <li><a href="#">Solicitante</a></li>
 		      <li><a href="#">Produto</a></li>
-		      <li><a href="#">Bebida</a></li>
+		      <li><a href="/bebida/listar">Bebida</a></li>
 		      <li><a href="#">Comida</a></li>
 		      <li><a href="#">Sobremesa</a></li>
 		      <li><a href="#">Pedido</a></li>
