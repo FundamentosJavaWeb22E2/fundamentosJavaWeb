@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.infnet.elberthapp.model.domain.Aluno;
+import br.edu.infnet.elberthapp.model.domain.Solicitante;
 import br.edu.infnet.elberthapp.model.domain.Usuario;
-import br.edu.infnet.elberthapp.model.service.AlunoService;
+import br.edu.infnet.elberthapp.model.service.SolicitanteService;
 
 @Controller
 public class AlunoController {
@@ -18,42 +18,42 @@ public class AlunoController {
 	private String mensagem;
 	
 	@Autowired 
-	private AlunoService alunoService;
+	private SolicitanteService solicitanteService;
 	
-	@GetMapping(value = "/aluno/listar")
+	@GetMapping(value = "/solicitante/listar")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
 		model.addAttribute("msg", mensagem);
 		
-		model.addAttribute("listagem", alunoService.obterLista(usuario));
+		model.addAttribute("listagem", solicitanteService.obterLista(usuario));
 		
-		return "aluno/lista";
+		return "solicitante/lista";
 	}
 
-	@GetMapping(value = "/aluno")
+	@GetMapping(value = "/solicitante")
 	public String telaCadastro() {
-		return "aluno/cadastro";
+		return "solicitante/cadastro";
 	}
 	
-	@PostMapping(value = "/aluno/incluir")
-	public String incluir(Aluno aluno, @SessionAttribute("user") Usuario usuario) {
+	@PostMapping(value = "/solicitante/incluir")
+	public String incluir(Solicitante solicitante, @SessionAttribute("user") Usuario usuario) {
 		
-		aluno.setUsuario(usuario);
+		solicitante.setUsuario(usuario);
 		
-		alunoService.incluir(aluno);
+		solicitanteService.incluir(solicitante);
 		
-		mensagem = "A inclusão do aluno "+aluno.getNome()+" ("+aluno.getEmail()+") foi realizada com sucesso!";
+		mensagem = "A inclusão do solicitante "+solicitante.getNome()+" ("+solicitante.getEmail()+") foi realizada com sucesso!";
 
-		return "redirect:/aluno/listar";
+		return "redirect:/solicitante/listar";
 	}
 	
-	@GetMapping(value = "/aluno/{id}/excluir")
+	@GetMapping(value = "/solicitante/{id}/excluir")
 	public String excluir(@PathVariable Integer id){
 		
-		alunoService.excluir(id);
+		solicitanteService.excluir(id);
 		
-		mensagem = "A exclusão do aluno ("+id+") foi realizada com sucesso!";
+		mensagem = "A exclusão do solicitante ("+id+") foi realizada com sucesso!";
 
-		return "redirect:/aluno/listar";
+		return "redirect:/solicitante/listar";
 	}
 }

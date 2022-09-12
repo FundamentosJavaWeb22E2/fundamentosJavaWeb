@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.Arrays"%>
-<%@page import="br.edu.infnet.elberthapp.model.domain.Solicitante"%>
+<%@page import="br.edu.infnet.elberthapp.model.domain.Aluno"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,47 +14,45 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 	<div class="container">
-		<h2>Cadastramento de usuários</h2>
+		<h2>Cadastramento de bebidas</h2>
 
 		<c:if test="${not empty msg}">		
 			<div class="alert alert-success">
 				<strong>Successo!</strong> ${msg}
 			</div>				
 		</c:if>
+		
+		<form action="/bebida" method="get">
+			<button type="submit" class="btn btn-gray">Novo</button>
+		</form>
 
-		<p>Listagem de usuários cadastrados: ${listagem.size()}</p>
+		<p>Listagem de bebidas cadastradas: ${listagem.size()}</p>
 		            
 		<table class="table table-striped">
 		  <thead>
 		    <tr>
 		      <th>ID</th>
 		      <th>Nome</th>
-		      <th>E-mail</th>
-		      <th>Senha</th>
-		      <th>Administrador</th>
-		      <th>Endereço</th>
-		      <th>Solicitantes</th>
-		      
-		      <c:if test="${user.admin}">
-		      	<th></th>
-		      </c:if>
+		      <th>Valor</th>
+		      <th>Código</th>
+		      <th>Gelada</th>
+		      <th>Tamanho</th>
+		      <th>Marca</th>
+		      <th></th>
 		    </tr>
 		  </thead>
 		  
 		  <tbody>
-			<c:forEach var="u" items="${listagem}">
+			<c:forEach var="b" items="${listagem}">
 			   <tr>
-			     <td>${u.id}</td>
-			     <td>${u.nome}</td>
-			     <td>${u.email}</td>
-			     <td>${u.senha}</td>
-			     <td>${u.admin}</td>
-			     <td>${u.endereco.uf}</td>
-			     <td>${u.solicitantes.size()}</td>
-			     
-			     <c:if test="${user.admin}">			     
-			     	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
-			     </c:if>
+			     <td>${b.id}</td>
+			     <td>${b.nome}</td>
+			     <td>${b.valor}</td>
+			     <td>${b.codigo}</td>
+			     <td>${b.gelada}</td>
+			     <td>${b.tamanho}</td>
+			     <td>${b.marca}</td>
+			     <td><a href="/bebida/${b.id}/excluir">Excluir</a></td>
 			   </tr>
 			</c:forEach>
 		  </tbody>

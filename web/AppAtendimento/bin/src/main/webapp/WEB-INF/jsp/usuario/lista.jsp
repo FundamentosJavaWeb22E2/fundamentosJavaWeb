@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.Arrays"%>
-<%@page import="br.edu.infnet.elberthapp.model.domain.Solicitante"%>
+<%@page import="br.edu.infnet.elberthapp.model.domain.Aluno"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,7 +11,6 @@
 	<title>App - Cadastro</title>
 </head>
 <body>
-	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 	<div class="container">
 		<h2>Cadastramento de usuários</h2>
@@ -33,7 +32,7 @@
 		      <th>Senha</th>
 		      <th>Administrador</th>
 		      <th>Endereço</th>
-		      <th>Solicitantes</th>
+		      <th>Alunos</th>
 		      
 		      <c:if test="${user.admin}">
 		      	<th></th>
@@ -50,7 +49,7 @@
 			     <td>${u.senha}</td>
 			     <td>${u.admin}</td>
 			     <td>${u.endereco.uf}</td>
-			     <td>${u.solicitantes.size()}</td>
+			     <td>${u.alunos.size()}</td>
 			     
 			     <c:if test="${user.admin}">			     
 			     	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>

@@ -14,47 +14,41 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 	<div class="container">
-		<h2>Cadastramento de usuários</h2>
+		<h2>Cadastramento de solicitantes</h2>
 
 		<c:if test="${not empty msg}">		
 			<div class="alert alert-success">
 				<strong>Successo!</strong> ${msg}
 			</div>				
 		</c:if>
+		
+		<form action="/solicitante" method="get">
+			<button type="submit" class="btn btn-gray">Novo</button>
+		</form>
 
-		<p>Listagem de usuários cadastrados: ${listagem.size()}</p>
+		<p>Listagem de solicitantes cadastrados: ${listagem.size()}</p>
 		            
 		<table class="table table-striped">
 		  <thead>
 		    <tr>
 		      <th>ID</th>
 		      <th>Nome</th>
+		      <th>Cpf</th>
 		      <th>E-mail</th>
-		      <th>Senha</th>
-		      <th>Administrador</th>
-		      <th>Endereço</th>
-		      <th>Solicitantes</th>
-		      
-		      <c:if test="${user.admin}">
-		      	<th></th>
-		      </c:if>
+		      <th>Usuário</th>
+		      <th></th>
 		    </tr>
 		  </thead>
 		  
 		  <tbody>
-			<c:forEach var="u" items="${listagem}">
+			<c:forEach var="s" items="${listagem}">
 			   <tr>
-			     <td>${u.id}</td>
-			     <td>${u.nome}</td>
-			     <td>${u.email}</td>
-			     <td>${u.senha}</td>
-			     <td>${u.admin}</td>
-			     <td>${u.endereco.uf}</td>
-			     <td>${u.solicitantes.size()}</td>
-			     
-			     <c:if test="${user.admin}">			     
-			     	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
-			     </c:if>
+			     <td>${s.id}</td>
+			     <td>${s.nome}</td>
+			     <td>${s.cpf}</td>
+			     <td>${s.email}</td>
+			     <td>${s.usuario.nome}</td>
+			     <td><a href="/solicitante/${s.id}/excluir">Excluir</a></td>
 			   </tr>
 			</c:forEach>
 		  </tbody>

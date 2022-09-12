@@ -18,6 +18,7 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+
 	@Autowired
 	private EnderecoService enderecoService;
 

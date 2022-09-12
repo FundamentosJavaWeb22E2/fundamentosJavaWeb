@@ -9,8 +9,9 @@
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="/">Home</a></li>
 			<c:if test="${not empty user}">
+		      <li><a href="/aluno/listar">Aluno</a></li>
 		      <li><a href="/usuario/listar">Usuário</a></li>
-		      <li><a href="/solicitante/listar">Solicitante</a></li>
+		      <li><a href="#">Solicitante</a></li>
 		      <li><a href="#">Produto</a></li>
 		      <li><a href="/bebida/listar">Bebida</a></li>
 		      <li><a href="#">Comida</a></li>
