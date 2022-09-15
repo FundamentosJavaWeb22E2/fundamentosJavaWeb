@@ -13,8 +13,8 @@
 		      <li><a href="/solicitante/listar">Solicitante</a></li>
 		      <li><a href="#">Produto</a></li>
 		      <li><a href="/bebida/listar">Bebida</a></li>
-		      <li><a href="#">Comida</a></li>
-		      <li><a href="#">Sobremesa</a></li>
+		      <li><a href="/comida/listar">Comida</a></li>
+		      <li><a href="/sobremesa/listar">Sobremesa</a></li>
 		      <li><a href="#">Pedido</a></li>
 			</c:if>	      
 	    </ul>

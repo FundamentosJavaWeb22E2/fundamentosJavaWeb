@@ -6,12 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.elberthapp.model.domain.Bebida;
+import br.edu.infnet.elberthapp.model.domain.Usuario;
 import br.edu.infnet.elberthapp.model.service.BebidaService;
 
 @Controller
 public class BebidaController {
+	
+	private String mensagem;
 	
 	@Autowired	
 	private BebidaService bebidaService;
@@ -22,18 +26,24 @@ public class BebidaController {
 	}	
 	
 	@GetMapping(value = "/bebida/listar")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		model.addAttribute("listagem", bebidaService.obterLista());
+		model.addAttribute("msg", mensagem);
+				
+		model.addAttribute("listagem", bebidaService.obterLista(usuario));
 		
 		return "bebida/lista";
 	}
 
 	@PostMapping(value = "/bebida/incluir")
-	public String incluir(Bebida bebida) {
+	public String incluir(Bebida bebida, @SessionAttribute("user") Usuario usuario) {
+		
+		bebida.setUsuario(usuario);
 		
 		bebidaService.incluir(bebida);
 		
+		mensagem = "A inclusão da bebida "+ bebida.getNome()+" ("+bebida.getValor()+") foi realizada com sucesso!";
+
 		return "redirect:/bebida/listar";
 	}
 	
@@ -42,6 +52,8 @@ public class BebidaController {
 		
 		bebidaService.excluir(id);
 		
+		mensagem = "A exclusão da bebida ("+id+") foi realizada com sucesso!";
+
 		return "redirect:/bebida/listar";
 	}
 }

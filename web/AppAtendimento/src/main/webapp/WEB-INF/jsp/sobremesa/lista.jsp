@@ -13,7 +13,7 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 	<div class="container">
-		<h2>Cadastramento de bebidas</h2>
+		<h2>Cadastramento de sobremesas</h2>
 
 		<c:if test="${not empty msg}">		
 			<div class="alert alert-success">
@@ -21,11 +21,11 @@
 			</div>				
 		</c:if>
 		
-		<form action="/bebida" method="get">
+		<form action="/sobremesa" method="get">
 			<button type="submit" class="btn btn-gray">Novo</button>
 		</form>
 
-		<p>Listagem de bebidas cadastradas: ${listagem.size()}</p>
+		<p>Listagem de sobremesas cadastradas: ${listagem.size()}</p>
 		            
 		<table class="table table-striped">
 		  <thead>
@@ -34,24 +34,24 @@
 		      <th>Nome</th>
 		      <th>Valor</th>
 		      <th>Código</th>
-		      <th>Gelada</th>
-		      <th>Tamanho</th>
-		      <th>Marca</th>
+		      <th>Doce</th>
+		      <th>Quantidade</th>
+		      <th>Informação</th>
 		      <th></th>
 		    </tr>
 		  </thead>
 		  
 		  <tbody>
-			<c:forEach var="b" items="${listagem}">
+			<c:forEach var="s" items="${listagem}">
 			   <tr>
-			     <td>${b.id}</td>
-			     <td>${b.nome}</td>
-			     <td>${b.valor}</td>
-			     <td>${b.codigo}</td>
-			     <td>${b.gelada}</td>
-			     <td>${b.tamanho}</td>
-			     <td>${b.marca}</td>
-			     <td><a href="/bebida/${b.id}/excluir">Excluir</a></td>
+			     <td>${s.id}</td>
+			     <td>${s.nome}</td>
+			     <td>${s.valor}</td>
+			     <td>${s.codigo}</td>
+			     <td>${s.doce}</td>
+			     <td>${s.quantidade}</td>
+			     <td>${s.informacao}</td>
+			     <td><a href="/sobremesa/${s.id}/excluir">Excluir</a></td>
 			   </tr>
 			</c:forEach>
 		  </tbody>

@@ -13,12 +13,17 @@ import br.edu.infnet.elberthapp.model.domain.Usuario;
 import br.edu.infnet.elberthapp.model.service.SolicitanteService;
 
 @Controller
-public class AlunoController {
+public class SolicitanteController {
 	
 	private String mensagem;
 	
 	@Autowired 
 	private SolicitanteService solicitanteService;
+	
+	@GetMapping(value = "/solicitante")
+	public String telaCadastro() {
+		return "solicitante/cadastro";
+	}
 	
 	@GetMapping(value = "/solicitante/listar")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
@@ -30,11 +35,6 @@ public class AlunoController {
 		return "solicitante/lista";
 	}
 
-	@GetMapping(value = "/solicitante")
-	public String telaCadastro() {
-		return "solicitante/cadastro";
-	}
-	
 	@PostMapping(value = "/solicitante/incluir")
 	public String incluir(Solicitante solicitante, @SessionAttribute("user") Usuario usuario) {
 		

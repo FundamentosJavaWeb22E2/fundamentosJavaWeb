@@ -25,10 +25,19 @@ public class Usuario {
 	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Solicitante> solicitantes;
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Produto> produtos;
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 	
+	@Override
+	public String toString() {
+
+		return nome + " - " + email;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -65,10 +74,16 @@ public class Usuario {
 	public void setSolicitantes(List<Solicitante> solicitantes) {
 		this.solicitantes = solicitantes;
 	}
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	public Endereco getEndereco() {
 		return endereco;
 	}
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}	
+	}
 }

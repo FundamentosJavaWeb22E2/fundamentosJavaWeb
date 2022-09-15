@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.elberthapp.model.domain.Bebida;
+import br.edu.infnet.elberthapp.model.domain.Usuario;
 import br.edu.infnet.elberthapp.model.repository.BebidaRepository;
 
 @Service
@@ -28,5 +29,9 @@ public class BebidaService {
 	
 	public List<Bebida> obterLista(){
 		return (List<Bebida>) bebidaRepository.findAll();
+	}
+
+	public List<Bebida> obterLista(Usuario usuario){		
+		return (List<Bebida>) bebidaRepository.obterLista(usuario.getId());
 	}
 }

@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.infnet.elberthapp.model.domain.Bebida;
+import br.edu.infnet.elberthapp.model.domain.Sobremesa;
 
 @Repository
-public interface BebidaRepository extends CrudRepository<Bebida, Integer> {
+public interface SobremesaRepository extends CrudRepository<Sobremesa, Integer> {
 
-	@Query("from Bebida b where b.usuario.id = :idUsuario")
-	List<Bebida> obterLista(Integer idUsuario);
+	@Query("from Sobremesa s where s.usuario.id = :idUsuario")
+	List<Sobremesa> obterLista(Integer idUsuario);
 }

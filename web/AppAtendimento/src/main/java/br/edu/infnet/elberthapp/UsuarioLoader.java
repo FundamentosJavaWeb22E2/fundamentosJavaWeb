@@ -20,21 +20,43 @@ public class UsuarioLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		Endereco e = new Endereco();
-		e.setBairro("bairro");
-		e.setCep("cep");
-		e.setComplemento("complemento");
-		e.setLocalidade("localidade");
-		e.setLogradouro("logradouro");
-		e.setUf("uf");
+		Endereco enderecoAdmin = new Endereco();
+		enderecoAdmin.setBairro("bairro admin");
+		enderecoAdmin.setCep("cep admin");
+		enderecoAdmin.setComplemento("complemento admin");
+		enderecoAdmin.setLocalidade("localidade admin");
+		enderecoAdmin.setLogradouro("logradouro admin");
+		enderecoAdmin.setUf("uf admin");
 
-		Usuario usuario = new Usuario();
-		usuario.setAdmin(true);
-		usuario.setEmail("elberth@elberth.com");
-		usuario.setEndereco(e);
-		usuario.setNome("Elberth L C Moraes");
-		usuario.setSenha("123");
+		Usuario admin = new Usuario();
+		admin.setAdmin(true);
+		admin.setEmail("elberth@elberth.com");
+		admin.setEndereco(enderecoAdmin);
+		admin.setNome("Elberth L C Moraes");
+		admin.setSenha("123");
 		
-		usuarioService.incluir(usuario);
+		usuarioService.incluir(admin);
+		
+		Endereco enderecoDev = new Endereco();
+		enderecoDev.setBairro("bairro dev");
+		enderecoDev.setCep("cep dev");
+		enderecoDev.setComplemento("complemento dev");
+		enderecoDev.setLocalidade("localidade dev");
+		enderecoDev.setLogradouro("logradouro dev");
+		enderecoDev.setUf("uf dev");
+
+		Usuario dev = new Usuario();
+		dev.setAdmin(false);
+		dev.setEmail("elberth@programador.com");
+		dev.setEndereco(enderecoDev);
+		dev.setNome("Elberth Programador");
+		dev.setSenha("123");
+		
+		usuarioService.incluir(dev);
+		
+		System.out.println("Usuários cadastrados: ");
+		for(Usuario u : usuarioService.obterLista()) {
+			System.out.println(u.getNome());
+		}		
 	}
 }

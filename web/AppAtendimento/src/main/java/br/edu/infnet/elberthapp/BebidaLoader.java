@@ -6,10 +6,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.elberthapp.model.domain.Bebida;
+import br.edu.infnet.elberthapp.model.domain.Usuario;
 import br.edu.infnet.elberthapp.model.service.BebidaService;
 
 @Component
-public class ProdutoLoader implements ApplicationRunner {
+public class BebidaLoader implements ApplicationRunner {
 	
 	@Autowired	
 	private BebidaService bebidaService;
@@ -17,6 +18,12 @@ public class ProdutoLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
+		Usuario admin = new Usuario();
+		admin.setId(1);
+		
+		Usuario dev = new Usuario();
+		dev.setId(2);
+
 		String[] bebidas = {"chope", "cafe", "suco", "agua"};
 		
 		for(String b : bebidas) {
@@ -27,6 +34,7 @@ public class ProdutoLoader implements ApplicationRunner {
 			bebida.setNome(b);
 			bebida.setTamanho(500);
 			bebida.setValor(10);
+			bebida.setUsuario(admin);
 			
 			bebidaService.incluir(bebida);
 		}
@@ -36,16 +44,35 @@ public class ProdutoLoader implements ApplicationRunner {
 		bebida = bebidaService.obterPorId(1);
 		System.out.println("Inclusão da primeira bebida: " + bebida.getNome());
 		
-		for(Bebida b : bebidaService.obterLista()) {
-			System.out.printf("%d - %s\n", b.getId(), b.getNome());
+		System.out.println("### Bebidas do usuário admin:");
+		for(Bebida b : bebidaService.obterLista(admin)) {
+			System.out.printf("%d - %s - %s\n", 
+					b.getId(),
+					b.getUsuario(),
+					b.getNome()
+				);
 		}
 
 		bebidaService.excluir(2);
 		
-		for(Bebida b : bebidaService.obterLista()) {
-			System.out.printf("%d - %s\n", b.getId(), b.getNome());
+		System.out.println("### Bebidas do usuário dev:");
+		for(Bebida b : bebidaService.obterLista(dev)) {
+			System.out.printf("%d - %s - %s\n", 
+					b.getId(),
+					b.getUsuario(),
+					b.getNome()
+				);
 		}
 		
+		System.out.println("### Bebidas do usuário admin:");
+		for(Bebida b : bebidaService.obterLista(admin)) {
+			System.out.printf("%d - %s - %s\n", 
+					b.getId(),
+					b.getUsuario(),
+					b.getNome()
+				);
+		}
+
 		try {
 			bebida = bebidaService.obterPorId(2);
 			System.out.println("Inclusão da primeira bebida: " + bebida.getNome());		
