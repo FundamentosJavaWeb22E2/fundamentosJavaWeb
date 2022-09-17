@@ -3,6 +3,7 @@ package br.edu.infnet.elberthapp.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.elberthapp.model.domain.Sobremesa;
@@ -32,6 +33,6 @@ public class SobremesaService {
 	}
 
 	public List<Sobremesa> obterLista(Usuario usuario){		
-		return (List<Sobremesa>) sobremesaRepository.obterLista(usuario.getId());
+		return (List<Sobremesa>) sobremesaRepository.obterLista(usuario.getId(), Sort.by(Sort.Direction.ASC, "nome", "informacao", "quantidade"));
 	}
 }

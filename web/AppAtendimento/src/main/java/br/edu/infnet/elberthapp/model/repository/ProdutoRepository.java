@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.infnet.elberthapp.model.domain.Sobremesa;
+import br.edu.infnet.elberthapp.model.domain.Produto;
 
 @Repository
-public interface SobremesaRepository extends CrudRepository<Sobremesa, Integer> {
+public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
 
-	@Query("from Sobremesa s where s.usuario.id = :idUsuario")
-	List<Sobremesa> obterLista(Integer idUsuario, Sort by);
+	@Query("from Produto p where p.usuario.id = :idUsuario")
+	List<Produto> obterLista(Integer idUsuario, Sort by);
 }

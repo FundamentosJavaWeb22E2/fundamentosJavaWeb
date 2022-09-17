@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.elberthapp.model.domain.Produto;
 import br.edu.infnet.elberthapp.model.domain.Sobremesa;
 import br.edu.infnet.elberthapp.model.domain.Usuario;
 import br.edu.infnet.elberthapp.model.service.SobremesaService;
@@ -19,6 +20,8 @@ public class SobremesaController {
 	
 	@Autowired	
 	private SobremesaService sobremesaService;
+	@Autowired
+	private ProdutoController produtoController;
 
 	@GetMapping(value = "/sobremesa")
 	public String telaCadastro() {
@@ -50,9 +53,9 @@ public class SobremesaController {
 	@GetMapping(value = "/sobremesa/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
-		sobremesaService.excluir(id);
+		Produto produto = produtoController.exclusao(id);
 		
-		mensagem = "A exclusão da sobremesa ("+id+") foi realizada com sucesso!";
+		mensagem = "A exclusão da sobremesa "+produto.getNome()+" foi realizada com sucesso!";
 
 		return "redirect:/sobremesa/listar";
 	}

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.elberthapp.model.domain.Comida;
+import br.edu.infnet.elberthapp.model.domain.Produto;
 import br.edu.infnet.elberthapp.model.domain.Usuario;
 import br.edu.infnet.elberthapp.model.service.ComidaService;
 
@@ -19,6 +20,8 @@ public class ComidaController {
 	
 	@Autowired	
 	private ComidaService comidaService;
+	@Autowired
+	private ProdutoController produtoController;
 
 	@GetMapping(value = "/comida")
 	public String telaCadastro() {
@@ -50,9 +53,9 @@ public class ComidaController {
 	@GetMapping(value = "/comida/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
-		comidaService.excluir(id);
+		Produto produto = produtoController.exclusao(id);
 		
-		mensagem = "A exclusão da comida ("+id+") foi realizada com sucesso!";
+		mensagem = "A exclusão da comida "+produto.getNome()+" foi realizada com sucesso!";
 
 		return "redirect:/comida/listar";
 	}

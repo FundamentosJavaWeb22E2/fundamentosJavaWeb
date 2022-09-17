@@ -21,7 +21,7 @@
 
 			<div class="form-group">
 				<label>CPF:</label>		
-				<input type="text" value="09876543211" name="nome" class="form-control">
+				<input type="text" value="09876543211" name="cpf" class="form-control">
 			</div>
 
 			<div class="form-group">			
