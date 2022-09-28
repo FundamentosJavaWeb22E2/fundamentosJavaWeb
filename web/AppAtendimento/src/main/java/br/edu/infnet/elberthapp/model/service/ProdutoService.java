@@ -16,6 +16,10 @@ public class ProdutoService {
 	@Autowired	
 	private ProdutoRepository produtoRepository;
 
+	public long obterQtde() {
+		return produtoRepository.count();
+	}
+
 	public void incluir(Produto produto) {
 		produtoRepository.save(produto);		
 	}

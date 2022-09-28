@@ -16,6 +16,10 @@ public class ComidaService {
 	@Autowired	
 	private ComidaRepository comidaRepository;
 
+	public long obterQtde() {
+		return comidaRepository.count();
+	}
+
 	public void incluir(Comida comida) {
 		comidaRepository.save(comida);		
 	}

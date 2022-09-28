@@ -1,5 +1,7 @@
 package br.edu.infnet.elberthapp.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,9 +23,17 @@ public abstract class Produto {
 	private String nome;
 	private float valor;
 	private int codigo;
+	@ManyToMany(mappedBy = "produtos")
+	private List<Pedido> pedidos;
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
+
+	@Override
+	public String toString() {
+
+		return nome;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -47,6 +58,12 @@ public abstract class Produto {
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 	public Usuario getUsuario() {
 		return usuario;

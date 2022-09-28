@@ -4,7 +4,7 @@
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">AppPedido</a>
+	      <a class="navbar-brand" href="/app">AppPedido</a>
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="/">Home</a></li>
@@ -15,7 +15,7 @@
 		      <li><a href="/bebida/listar">Bebida</a></li>
 		      <li><a href="/comida/listar">Comida</a></li>
 		      <li><a href="/sobremesa/listar">Sobremesa</a></li>
-		      <li><a href="#">Pedido</a></li>
+		      <li><a href="/pedido/listar">Pedido</a></li>
 			</c:if>	      
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">

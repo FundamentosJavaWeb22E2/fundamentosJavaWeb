@@ -50,10 +50,13 @@ public class SolicitanteController {
 	@GetMapping(value = "/solicitante/{id}/excluir")
 	public String excluir(@PathVariable Integer id){
 		
-		solicitanteService.excluir(id);
+		try {
+			solicitanteService.excluir(id);		
+			mensagem = "A exclusão do solicitante ("+id+") foi realizada com sucesso!";
+		} catch (Exception e) {
+			mensagem = "Impossível realizar a exclusão do solicitante ("+id+")! Este solicitante está associado a um pedido.";
+		}		
 		
-		mensagem = "A exclusão do solicitante ("+id+") foi realizada com sucesso!";
-
 		return "redirect:/solicitante/listar";
 	}
 }

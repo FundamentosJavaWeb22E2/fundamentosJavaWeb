@@ -34,6 +34,8 @@
 		      <th>Administrador</th>
 		      <th>Endereço</th>
 		      <th>Solicitantes</th>
+		      <th>Produtos</th>
+		      <th>Pedidos</th>
 		      
 		      <c:if test="${user.admin}">
 		      	<th></th>
@@ -51,9 +53,17 @@
 			     <td>${u.admin}</td>
 			     <td>${u.endereco.uf}</td>
 			     <td>${u.solicitantes.size()}</td>
+			     <td>${u.produtos.size()}</td>
+			     <td>${u.pedidos.size()}</td>
 			     
 			     <c:if test="${user.admin}">			     
-			     	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
+			     	<td>
+				     	<c:choose>
+				     		<c:when test = "${user.id != u.id}">
+				     			<a href="/usuario/${u.id}/excluir">Excluir</a>
+				     		</c:when>
+				     	</c:choose>
+			     	</td>
 			     </c:if>
 			   </tr>
 			</c:forEach>

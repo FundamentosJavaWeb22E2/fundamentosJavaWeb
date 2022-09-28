@@ -16,6 +16,10 @@ public class SobremesaService {
 	@Autowired	
 	private SobremesaRepository sobremesaRepository;
 
+	public long obterQtde() {
+		return sobremesaRepository.count();
+	}
+
 	public void incluir(Sobremesa sobremesa) {
 		sobremesaRepository.save(sobremesa);		
 	}

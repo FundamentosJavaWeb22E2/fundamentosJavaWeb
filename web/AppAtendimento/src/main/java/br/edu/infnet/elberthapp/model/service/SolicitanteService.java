@@ -16,6 +16,10 @@ public class SolicitanteService {
 	@Autowired
 	private SolicitanteRepository solicitanteRepository;
 
+	public long obterQtde() {
+		return solicitanteRepository.count();
+	}
+
 	public void incluir(Solicitante solicitante) {
 		solicitanteRepository.save(solicitante);
 	}

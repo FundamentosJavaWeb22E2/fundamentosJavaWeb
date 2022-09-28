@@ -14,8 +14,12 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	public long obterQtde() {
+		return usuarioRepository.count();
+	}
 
-	public List<Usuario> obterLista(){
+	public List<Usuario> obterLista(){		
 		return (List<Usuario>) usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "email"));
 	}
 	

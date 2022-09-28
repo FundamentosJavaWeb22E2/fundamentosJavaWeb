@@ -53,9 +53,13 @@ public class ComidaController {
 	@GetMapping(value = "/comida/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
-		Produto produto = produtoController.exclusao(id);
-		
-		mensagem = "A exclusão da comida "+produto.getNome()+" foi realizada com sucesso!";
+		Produto produto = null;
+		try {
+			produto = produtoController.exclusao(id);
+			mensagem = "A exclusão da comida "+produto.getNome()+" foi realizada com sucesso!";			
+		} catch (Exception e) {
+			mensagem = "Impossível realizar a exclusão do produto ("+id+")! Este produto está associado a um pedido.";		
+		}
 
 		return "redirect:/comida/listar";
 	}
